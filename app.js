@@ -3,6 +3,9 @@ const bodyParser=require("body-parser");
 const request=require("request");
 const https =require("https");
 
+require('dotenv').config()
+
+
 const app=express();
 
 app.use(express.static("public"));
@@ -36,7 +39,7 @@ app.post("/",function(req,res){
 
     const options ={
         method: "POST",
-        auth: "Akash:48864b89fe1a88e6d039c427f4421219-us13"
+        auth: "Akash:"+process.env.API_KEY
     }
 
     const request = https.request(url,options,function(response){
@@ -65,9 +68,3 @@ app.post("/failure",function(req,res){
 app.listen(process.env.PORT || 3000,function(){
     console.log("server is running on port 3000");
 })
-
-// mailchimp api key
-// 57e369eb8b3a0eb140f1f0c6b3a5cfb4-us13
-
-// Id
-// 67b04350ea
